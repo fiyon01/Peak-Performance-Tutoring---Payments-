@@ -5,6 +5,7 @@ import "react-toastify/dist/ReactToastify.css";
 import Homepage from "./pages/Homepage";
 import StudentEnrollment  from "./pages/StudentEnrollment"
 import PaymentsPage from "./pages/PaymentsPage"
+import Adminregpage from "./pages/Adminregpage"
 
 function App() {
 
@@ -12,6 +13,7 @@ function App() {
     <>
       <Router>
         <Routes>
+          <Route path="/admin/register" element={<Adminregpage/>}/>
           <Route path="/" element={<Homepage/>}/>
           <Route path="/parents/student" element={<StudentEnrollment/>} /> 
           <Route path="/students-payments" element={<PaymentsPage/>}/>

@@ -1,5 +1,7 @@
 const bcrypt = require('bcryptjs');
 const db = require('../config/db'); // Simulated database module
+const Admin = require("../models/admin");
+
 
 const saveAdmin = async({ name, username, email, password }) => {
 
@@ -7,7 +9,7 @@ const saveAdmin = async({ name, username, email, password }) => {
 
     // check whether admin exists with the email
 
-    const existingAdmin = db.findOne({ email});
+    const existingAdmin = await Admin.findOne({ email});
 
     if(existingAdmin){
         throw new Error(" Admin already exists with the email address");
@@ -18,8 +20,8 @@ const saveAdmin = async({ name, username, email, password }) => {
 
          if(hashedPassword){
         
-            const Admin = await db.Create({ name, username, email, hashedPassword})
-             return Admin
+            const newAdmin = await Admin.create({ name, username, email, password:hashedPassword})
+             return newAdmin
         
           }else{
 

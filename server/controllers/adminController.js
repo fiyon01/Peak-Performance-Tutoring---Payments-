@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken');
 const dotenv = require("dotenv");
-const saveAdmin = require("../services/admin.services")
+const {saveAdmin} = require("../services/admin.services")
 
 //load env variables
 dotenv.config()
